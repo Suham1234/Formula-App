@@ -2,6 +2,7 @@ import { checkAnswer, saveToStorage, loadFromStorage, shuffleArray, debounce } f
 import mathFormulas from '../data/math_formulas.js';
 import physicsFormulas from '../data/physics_formulas.js';
 import chemistryFormulas from '../data/chemistry_formulas.js';
+import chemistryReactions from '../data/chemistry_reactions.js';
 
 
 class FormulaFlashcardApp {
@@ -12,7 +13,8 @@ class FormulaFlashcardApp {
         this.formulas = {
             math: mathFormulas,
             physics: physicsFormulas,
-            chemistry: chemistryFormulas
+            chemistry: chemistryFormulas,
+            reactions: chemistryReactions
         };
         this.progress = loadFromStorage('formulaProgress') || {};
         this.shuffledCards = [];
@@ -95,7 +97,8 @@ class FormulaFlashcardApp {
         const accentColors = {
             math: '#4a90d9',
             physics: '#9b59b6',
-            chemistry: '#27ae60'
+            chemistry: '#27ae60',
+            reactions: '#e67e22'
         };
         document.documentElement.style.setProperty('--accent', accentColors[subject]);
 
