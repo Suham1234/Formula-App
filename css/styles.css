@@ -1,0 +1,649 @@
+:root {
+    --bg-primary: #0f0f1a;
+    --bg-secondary: #1a1a2e;
+    --bg-card: #16213e;
+    --bg-hover: #1f2a47;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-math: #4a90d9;
+    --accent-physics: #9b59b6;
+    --accent-chemistry: #27ae60;
+    --accent: var(--accent-math);
+    --accent-gold: #f39c12;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--accent-math), var(--accent-physics), var(--accent-chemistry));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.subject-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.subject-tab {
+    padding: 12px 30px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.subject-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px var(--shadow);
+}
+
+.subject-tab.active {
+    border-color: var(--accent);
+    background: var(--bg-card);
+}
+
+.subject-tab[data-subject="math"].active {
+    border-color: var(--accent-math);
+    box-shadow: 0 0 20px rgba(74, 144, 217, 0.3);
+}
+
+.subject-tab[data-subject="physics"].active {
+    border-color: var(--accent-physics);
+    box-shadow: 0 0 20px rgba(155, 89, 182, 0.3);
+}
+
+.subject-tab[data-subject="chemistry"].active {
+    border-color: var(--accent-chemistry);
+    box-shadow: 0 0 20px rgba(39, 174, 96, 0.3);
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--border-radius);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.topic-select {
+    padding: 12px 20px;
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--border-radius);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.topic-select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.mode-toggle {
+    display: flex;
+    gap: 10px;
+}
+
+.mode-btn {
+    padding: 12px 20px;
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--border-radius);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mode-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--bg-card);
+}
+
+.mode-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.progress-bar {
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.progress-track {
+    height: 8px;
+    background: var(--bg-primary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--success));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.stat-dot.total { background: var(--accent); }
+.stat-dot.learned { background: var(--success); }
+.stat-dot.practice { background: var(--warning); }
+
+.flashcard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    margin-bottom: 30px;
+    transform: translateZ(0);
+}
+
+.flashcard.single-card {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 700px;
+    height: 380px;
+    cursor: pointer;
+    transform: translateZ(0);
+    contain: layout style paint;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--bg-secondary);
+    background: var(--bg-card);
+    will-change: opacity;
+}
+
+.flashcard-front {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translateZ(1px);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg) translateZ(1px);
+}
+
+.flashcard-front .card-topic,
+.flashcard-back .card-topic {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+.formula-display {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--bg-primary);
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.formula-display .katex {
+    font-size: 2rem;
+}
+
+.katex-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+}
+
+.tap-hint {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.flashcard-back .formula-display {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.flashcard-back .explanation {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    flex: 1;
+}
+
+.card-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.card-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.card-btn.learned {
+    background: var(--success);
+    color: white;
+}
+
+.card-btn.practice {
+    background: var(--warning);
+    color: white;
+}
+
+.card-btn:hover {
+    transform: scale(1.05);
+}
+
+.card-btn.active {
+    box-shadow: 0 0 20px currentColor;
+    transform: scale(1.02);
+}
+
+.navigation-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-btn {
+    padding: 14px 30px;
+    border: 2px solid var(--accent);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 120px;
+}
+
+.nav-btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(74, 144, 217, 0.3);
+}
+
+.nav-btn.shuffle {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.nav-btn.shuffle:hover {
+    background: var(--accent-gold);
+    color: var(--bg-primary);
+    box-shadow: 0 5px 20px rgba(243, 156, 18, 0.3);
+}
+
+.progress-dots {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+    max-height: 50px;
+    overflow-y: auto;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.dot:hover {
+    transform: scale(1.3);
+}
+
+.dot.active {
+    background: var(--accent-gold);
+    box-shadow: 0 0 10px var(--accent-gold);
+}
+
+.dot.learned {
+    background: var(--success);
+}
+
+.dot.practice {
+    background: var(--warning);
+}
+
+.card-counter {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.type-mode {
+    background: var(--bg-card);
+    border: 2px solid var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.type-mode h3 {
+    margin-bottom: 15px;
+    color: var(--accent);
+}
+
+.type-question {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.type-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--bg-secondary);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.type-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.type-hint {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.type-result {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.type-result.correct {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+}
+
+.type-result.incorrect {
+    background: rgba(231, 76, 60, 0.2);
+    color: var(--danger);
+}
+
+.type-result.partial {
+    background: rgba(243, 156, 18, 0.2);
+    color: var(--warning);
+}
+
+.type-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.type-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.type-btn.primary {
+    background: var(--accent);
+    color: white;
+}
+
+.type-btn.secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.type-btn:hover {
+    transform: scale(1.05);
+}
+
+.no-cards {
+    text-align: center;
+    padding: 50px;
+    color: var(--text-secondary);
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-box,
+    .topic-select,
+    .mode-toggle {
+        width: 100%;
+    }
+    
+    .flashcard.single-card {
+        height: 350px;
+    }
+    
+    .formula-display {
+        font-size: 1.4rem;
+    }
+    
+    .formula-display .katex {
+        font-size: 1.5rem;
+    }
+    
+    .nav-btn {
+        padding: 12px 20px;
+        min-width: 100px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .subject-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .subject-tab {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        padding: 10px 15px;
+        min-width: 90px;
+    }
+    
+    .flashcard.single-card {
+        height: 320px;
+    }
+}

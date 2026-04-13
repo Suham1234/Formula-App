@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula Flashcards</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HSC Formula Flashcards</h1>
+            <p class="subtitle">Bangladesh HSC 2026 • Math • Physics • Chemistry</p>
+        </header>
+
+        <nav class="subject-tabs">
+            <button class="subject-tab active" data-subject="math">📐 Math</button>
+            <button class="subject-tab" data-subject="physics">⚛ Physics</button>
+            <button class="subject-tab" data-subject="chemistry">🧪 Chemistry</button>
+        </nav>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Search formulas...">
+            </div>
+            <select id="topicSelect" class="topic-select">
+                <option value="all">All Topics</option>
+            </select>
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="flip">🃏 Flip Cards</button>
+                <button class="mode-btn" data-mode="type">✏️ Type Answer</button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-info">
+                <span id="progressText">0% mastered</span>
+                <div class="stats">
+                    <span class="stat-item"><span class="stat-dot total"></span> Total: <span id="totalCount">0</span></span>
+                    <span class="stat-item"><span class="stat-dot learned"></span> Learned: <span id="learnedCount">0</span></span>
+                    <span class="stat-item"><span class="stat-dot practice"></span> Practice: <span id="practiceCount">0</span></span>
+                </div>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <main id="flashcardContainer" class="flashcard-container">
+            <div class="flashcard single-card" id="mainFlashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front" id="cardFront">
+                        <span class="card-topic" id="cardTopic">Trigonometry</span>
+                        <div class="formula-display katex-display" id="formulaFront"></div>
+                        <p class="tap-hint">Tap to reveal</p>
+                    </div>
+                    <div class="flashcard-back" id="cardBack">
+                        <span class="card-topic" id="cardTopicBack">Trigonometry</span>
+                        <div class="formula-display katex-display" id="formulaBack"></div>
+                        <div class="explanation" id="cardExplanation"></div>
+                        <div class="card-actions">
+                            <button class="card-btn learned" id="btnLearned" onclick="app.markCard('learned')">
+                                ✓ Learned
+                            </button>
+                            <button class="card-btn practice" id="btnPractice" onclick="app.markCard('practice')">
+                                ↻ Practice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="navigation-controls">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="btnPrev" onclick="app.prevCard()">
+                    ← Prev
+                </button>
+                <button class="nav-btn shuffle" id="btnShuffle" onclick="app.shuffleCards()">
+                    ⇄ Shuffle
+                </button>
+                <button class="nav-btn" id="btnNext" onclick="app.nextCard()">
+                    Next →
+                </button>
+            </div>
+            <div class="progress-dots" id="progressDots"></div>
+            <div class="card-counter" id="cardCounter">Card 1 of 12</div>
+        </div>
+
+        <footer class="footer">
+            <p>Built for Bangladesh HSC Students • Study smart, score higher! 📚</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
